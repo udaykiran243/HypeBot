@@ -1,0 +1,11 @@
+services:
+  - type: worker
+    name: hypebot-worker
+    env: node
+    buildCommand: npm install
+    startCommand: npm run start:bot
+    envVars:
+      - key: DISCORD_BOT_TOKEN
+        sync: false
+      - key: MURF_FALCON_API_KEY
+        sync: false
