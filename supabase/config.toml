@@ -1,0 +1,7 @@
+project_id = "intwfriubbbtisnyywpu"
+
+[functions.murf-voices]
+verify_jwt = false
+
+[functions.murf-tts]
+verify_jwt = false
