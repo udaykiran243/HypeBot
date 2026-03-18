@@ -17,6 +17,9 @@ npm i
 
 # Start the development server
 npm run dev
+
+# Start the bot
+npm run start:bot
 ```
 
 ## Technologies Used
