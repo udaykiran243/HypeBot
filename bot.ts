@@ -11,9 +11,20 @@ import {
 import dotenv from 'dotenv';
 import translate from 'google-translate-api-x';
 import { Readable } from 'stream';
+import http from 'http'; // Add HTTP library
 
 // Load environment variables from .env
 dotenv.config();
+
+// Create a dummy web server so Render.com's "Web Service" thinks we are a website
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('HypeBot is alive and running!\n');
+});
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`🌍 Dummy web server listening on port ${PORT}`);
+});
 
 const DISCORD_TOKEN = process.env.DISCORD_BOT_TOKEN;
 const MURF_API_KEY = process.env.MURF_FALCON_API_KEY;
