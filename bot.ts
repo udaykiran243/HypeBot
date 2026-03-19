@@ -215,6 +215,22 @@ Try these commands:
         }
     }
 
+    // Command: !languages (Lists supported language codes)
+    if (message.content === '!languages') {
+        message.reply(`🌍 **Supported Language Codes:**
+\`en\` - English 🇺🇸/🇬🇧
+\`es\` - Spanish 🇪🇸/🇲🇽
+\`fr\` - French 🇫🇷
+\`de\` - German 🇩🇪
+\`hi\` - Hindi 🇮🇳
+\`ja\` - Japanese 🇯🇵
+\`it\` - Italian 🇮🇹
+\`pt\` - Portuguese 🇧🇷
+\`te\` - Telugu 🇮🇳
+
+*Example usage: \`!translate ja hello how are you\`*`);
+    }
+
     // Command: !say <message>
     if (message.content.startsWith('!say ')) {
         if (!connection || connection.state.status !== VoiceConnectionStatus.Ready) {
