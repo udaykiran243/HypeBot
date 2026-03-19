@@ -52,13 +52,9 @@ MURF_FALCON_API_KEY="your_murf_api_key_here"
 ```
 
 ### 4. Start the Application
-You can run the website and bot independently.
 ```bash
-# To start the React Website
-npm run dev
-
 # To start the Discord Bot
-npm run start:bot
+npm start
 ```
 
 ---
