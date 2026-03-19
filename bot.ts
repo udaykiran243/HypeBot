@@ -12,6 +12,8 @@ import dotenv from 'dotenv';
 import translate from 'google-translate-api-x';
 import { Readable } from 'stream';
 import http from 'http'; // Add HTTP library
+import fs from 'fs';
+import path from 'path';
 
 // Load environment variables from .env
 dotenv.config();
@@ -100,6 +102,7 @@ async function generateAndPlaySpeech(message: Message, text: string, voiceId: st
                 text: text,
                 voiceId: voiceId,
                 model: 'FALCON',
+                style: 'Conversational'
             }),
         });
 
@@ -112,14 +115,33 @@ async function generateAndPlaySpeech(message: Message, text: string, voiceId: st
         // Convert the arrayBuffer to a buffer suitable for @discordjs/voice
         const arrayBuffer = await response.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
-        const stream = Readable.from(buffer);
+        
+        // Write the buffer to a temporary MP3 file to prevent ffmpeg streaming stutter/breakage
+        const tempFilePath = path.join(process.cwd(), `temp_${Date.now()}_${Math.floor(Math.random() * 1000)}.mp3`);
+        fs.writeFileSync(tempFilePath, buffer);
 
-        // Create audio resource and play it
-        const resource = createAudioResource(stream);
+        // Create audio resource from file
+        const resource = createAudioResource(tempFilePath);
         player.play(resource);
+
+        // Clean up the temp file once the bot finishes playing it
+        player.once(AudioPlayerStatus.Idle, () => {
+            if (fs.existsSync(tempFilePath)) {
+                try {
+                    fs.unlinkSync(tempFilePath);
+                } catch (e) {
+                    console.error("Failed to delete temp file:", e);
+                }
+            }
+        });
 
         player.on('error', error => {
             console.error('Audio Player Error:', error);
+            if (fs.existsSync(tempFilePath)) {
+                try {
+                    fs.unlinkSync(tempFilePath);
+                } catch (e) {}
+            }
         });
 
     } catch (error) {
