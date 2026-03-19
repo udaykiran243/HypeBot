@@ -91,6 +91,24 @@ async function generateAndPlaySpeech(message: Message, text: string, voiceId: st
     try {
         console.log(`Generating TTS for: "${text}" with Voice: ${voiceId}`);
         
+        const payload: any = {
+            text: text,
+            voiceId: voiceId,
+            model: 'FALCON'
+        };
+
+        // Some voices support "Conversational", others support "Conversation", and some support neither.
+        // If a style is passed that the voice doesn't support, the API will crash.
+        // We handle the known voices accordingly.
+        const voiceWithConversationStyle = ['fr-FR-axel', 'fr-FR-guillaume'];
+        const voicesWithNoStyle = ['hi-IN-kabir', 'en-US-claire', 'hi-IN-rahul', 'hi-IN-amit'];
+
+        if (voiceWithConversationStyle.includes(voiceId)) {
+            payload.style = 'Conversation';
+        } else if (!voicesWithNoStyle.includes(voiceId)) {
+            payload.style = 'Conversational';
+        }
+
         // Request audio stream from Murf Falcon
         const response = await fetch('https://global.api.murf.ai/v1/speech/stream', {
             method: 'POST',
@@ -98,12 +116,7 @@ async function generateAndPlaySpeech(message: Message, text: string, voiceId: st
                 'api-key': MURF_API_KEY as string,
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                text: text,
-                voiceId: voiceId,
-                model: 'FALCON',
-                style: 'Conversational'
-            }),
+            body: JSON.stringify(payload),
         });
 
         if (!response.ok) {
