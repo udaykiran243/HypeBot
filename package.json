@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "tsx bot.ts",
+    "start:bot": "tsx bot.ts",
     "dev": "tsx watch bot.ts",
     "build": "echo 'No build step required'"
   },
