@@ -8,6 +8,9 @@ A high-performance Discord bot that joins your voice channel to instantly transl
 
 The bot currently supports the following commands in any text channel:
 
+### `!languages`
+Returns a list of all currently supported language codes for translation.
+
 ### `!say-translate <language_code> <text>`
 This is the main command. The bot will join your current voice channel, speak the original text in English, instantly translate it, and speak the translated text using a native-sounding Murf AI voice.
 
