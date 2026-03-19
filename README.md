@@ -4,30 +4,26 @@ A high-performance Discord bot that joins your voice channel to instantly transl
 
 ---
 
-## 🚀 **Bot Commands**
+## 🚀 **Bot Commands (Slash Commands)**
 
-The bot currently supports the following commands in any text channel:
+The bot has been upgraded to an enterprise-grade **Slash Command** (`/`) architecture for simple, UI-driven command execution. It currently supports:
 
-### `!languages`
+### `/languages`
 Returns a list of all currently supported language codes for translation.
 
-### `!say-translate <language_code> <text>`
-This is the main command. The bot will join your current voice channel, speak the original text in English, instantly translate it, and speak the translated text using a native-sounding Murf AI voice.
+### `/say <text>`
+The bot simply speaks the text entered in a native English voice.
 
-**Examples:**
-* `!say-translate fr Hello World!` (Translates to French)
-* `!say-translate te How are you doing today?` (Translates to Telugu)
-* `!say-translate ja Good morning everyone!` (Translates to Japanese)
+### `/translate <language_code> <text>`
+*(Auto-detects the origin language!)* 
+Enter any text in any language, and the bot will auto-detect the source language, translate it to your target `<language_code>`, and speak it in a flawless, native-sounding Murf voice for that country.
 
-**Supported Language Codes:**
-* `es` (Spanish)
-* `fr` (French)
-* `de` (German)
-* `hi` (Hindi)
-* `ja` (Japanese)
-* `it` (Italian)
-* `pt` (Portuguese)
-* `te` (Telugu)
+### `/say-translate <language_code> <text>`
+The bot will join your current voice channel, speak the original text using the voice of the detected origin language, instantly translate it, and speak the translated text using a native-sounding voice of the target language.
+
+**Examples Targets:**
+`es` (Spanish) | `fr` (French) | `de` (German) | `hi` (Hindi) | `ja` (Japanese) | `it` (Italian) | `pt` (Portuguese) | `te` (Telugu)
+
 
 ---
 
