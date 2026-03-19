@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "tsx bot.ts",
-    "dev": "tsx watch bot.ts"
+    "dev": "tsx watch bot.ts",
+    "build": "echo 'No build step required'"
   },
   "dependencies": {
     "@discordjs/voice": "^0.19.2",
