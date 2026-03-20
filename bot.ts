@@ -90,7 +90,7 @@ class GuildQueue {
         });
     }
 
-    async processQueue() {
+    async processQueue(): Promise<void> {
         if (this.isPlaying || this.queue.length === 0 || !this.connection) return;
         this.isPlaying = true;
 
