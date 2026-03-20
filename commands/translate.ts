@@ -38,7 +38,8 @@ export async function execute(interaction: ChatInputCommandInteraction) {
     }
     
     await interaction.deferReply();
-    const targetLang = interaction.options.getString('language', true).toLowerCase();
+    let targetLang = interaction.options.getString('language', true).toLowerCase();
+    if (targetLang === 'zh-cn') targetLang = 'zh-CN'; // Google Translate API is case-sensitive for Chinese
     const textToTranslate = interaction.options.getString('text', true);
 
     try {
