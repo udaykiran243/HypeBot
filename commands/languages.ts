@@ -15,5 +15,5 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 \`it\` - Italian 🇮🇹
 \`pt\` - Portuguese 🇧🇷
 \`ko\` - Korean 🇰🇷
-\`zh-CN\` - Chinese 🇨🇳\`, ephemeral: true });
+\`zh-CN\` - Chinese 🇨🇳`, ephemeral: true });
 }
