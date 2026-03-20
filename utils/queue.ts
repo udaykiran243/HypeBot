@@ -22,7 +22,7 @@ export const VOICE_MAP: Record<string, string[]> = {
     "it": ["it-IT-giulia", "it-IT-angelo"],
     "pt": ["pt-BR-isadora", "pt-BR-heitor"],
     "ko": ["ko-KR-jangmi", "ko-KR-sanghoon"],
-    "zh": ["zh-CN-baolin", "zh-CN-wei"]
+    "zh-cn": ["zh-CN-baolin", "zh-CN-wei"]
 };
 
 export const DEFAULT_VOICE_ID = "en-US-samantha";

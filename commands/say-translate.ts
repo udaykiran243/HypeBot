@@ -18,7 +18,7 @@ export const data = new SlashCommandBuilder()
             { name: '🇮🇹 Italian', value: 'it' },
             { name: '🇧🇷 Portuguese', value: 'pt' },
             { name: '🇰🇷 Korean', value: 'ko' },
-            { name: '🇨🇳 Chinese', value: 'zh' }
+            { name: '🇨🇳 Chinese', value: 'zh-CN' }
         )
     )
     .addStringOption(opt => opt.setName('text').setDescription('Text to speak').setRequired(true));
