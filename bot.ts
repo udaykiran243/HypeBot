@@ -45,11 +45,12 @@ const VOICE_MAP: Record<string, string[]> = {
     "es": ["es-ES-carmen", "es-ES-enrique"],
     "fr": ["fr-FR-axel", "fr-FR-guillaume"],
     "de": ["de-DE-josephine", "de-DE-matthias"],
-    "hi": ["hi-IN-shweta", "hi-IN-kabir"],
+    "hi": ["hi-IN-karan", "hi-IN-namrita", "hi-IN-sunaina"],
     "ja": ["ja-JP-kimi", "ja-JP-kenji"],
     "it": ["it-IT-giulia", "it-IT-angelo"],
-    "pt": ["pt-BR-isadora", "pt-BR-benício", "pt-BR-heitor"],
-    "te": ["en-IN-arohi", "en-IN-rohan"]
+    "pt": ["pt-BR-isadora", "pt-BR-heitor"],
+    "ko": ["ko-KR-jangmi", "ko-KR-sanghoon"],
+    "zh": ["zh-CN-baolin", "zh-CN-wei"]
 };
 
 const DEFAULT_VOICE_ID = "en-US-samantha";
@@ -243,7 +244,8 @@ client.on('interactionCreate', async interaction => {
 \`ja\` - Japanese 🇯🇵
 \`it\` - Italian 🇮🇹
 \`pt\` - Portuguese 🇧🇷
-\`te\` - Telugu 🇮🇳`, ephemeral: true });
+\`ko\` - Korean 🇰🇷
+\`zh\` - Chinese 🇨🇳`, ephemeral: true });
     }
 
     else if (commandName === 'say') {
